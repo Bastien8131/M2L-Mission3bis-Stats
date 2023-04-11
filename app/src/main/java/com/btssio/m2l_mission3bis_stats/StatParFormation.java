@@ -6,13 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.Statement;
-import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StatParFormation extends AppCompatActivity {
 
@@ -35,8 +36,9 @@ public class StatParFormation extends AppCompatActivity {
 
 
     /*REQUETE SQL*/
-    private class GetListFormation extends AsyncTask<Void, Void, Void> {
-        protected Void doInBackground(Void... params) {
+    private class GetListFormation extends AsyncTask<Void, Void, List<FormationDomaineData>> {
+        protected List<FormationDomaineData> doInBackground(Void... params) {
+            List<FormationDomaineData> dataList = new ArrayList<>();
             try{
                 // Connexion à la base de données MySQL
                 Statement st = connexionSQLBDD();
@@ -52,19 +54,26 @@ public class StatParFormation extends AppCompatActivity {
                     String domainLabel = rs.getString("DOMAINLABEL");
                     String formationNom = rs.getString("FORMATIONNOM");
 
-                    // faire quelque chose avec les valeurs récupérées
-                    // par exemple, les ajouter à une liste ou les afficher dans la console
-                    System.out.println("Domain Label : " + domainLabel + ", Formation Nom : " + formationNom);
+                    // Ajouter les valeurs récupérées à la liste d'objets de données
+                    FormationDomaineData data = new FormationDomaineData(domainLabel, formationNom);
+                    dataList.add(data);
                 }
 
             }catch (Exception e){
                 e.printStackTrace();
             }
-            return null;
+            return dataList;
         }
 
-        protected void onPostExecute(Void result) {
-            // Mettre à jour l'interface utilisateur si nécessaire
+        protected void onPostExecute(List<FormationDomaineData> dataList) {
+            if (dataList != null && dataList.size() > 0) {
+                // Créer un ArrayAdapter en utilisant la liste d'objets de données
+                ArrayAdapter<FormationDomaineData> adapter = new ArrayAdapter<>(StatParFormation.this, android.R.layout.simple_list_item_1, dataList);
+
+                // Affecter l'adaptateur à la ListView
+                lstStatFormList.setAdapter(adapter);
+            }
         }
+
     }
 }
