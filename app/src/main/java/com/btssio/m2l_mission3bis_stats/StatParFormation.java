@@ -8,12 +8,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StatParFormation extends AppCompatActivity {
 
@@ -37,8 +41,8 @@ public class StatParFormation extends AppCompatActivity {
 
     /*REQUETE SQL*/
     private class GetListFormation extends AsyncTask<Void, Void, List<FormationDomaineData>> {
+        List<FormationDomaineData> dataList = new ArrayList<>();
         protected List<FormationDomaineData> doInBackground(Void... params) {
-            List<FormationDomaineData> dataList = new ArrayList<>();
             try{
                 // Connexion à la base de données MySQL
                 Statement st = connexionSQLBDD();
@@ -66,12 +70,33 @@ public class StatParFormation extends AppCompatActivity {
         }
 
         protected void onPostExecute(List<FormationDomaineData> dataList) {
-            if (dataList != null && dataList.size() > 0) {
-                // Créer un ArrayAdapter en utilisant la liste d'objets de données
-                ArrayAdapter<FormationDomaineData> adapter = new ArrayAdapter<>(StatParFormation.this, android.R.layout.simple_list_item_1, dataList);
+            //https://stackoverflow.com/questions/14098032/add-string-to-string-array
+            ArrayList<String> titleArray = new ArrayList<String>();
+            ArrayList<String> detailArray = new ArrayList<String>();
+            List<Map<String, String>> listArray = new ArrayList<>();
 
-                // Affecter l'adaptateur à la ListView
-                lstStatFormList.setAdapter(adapter);
+            if (dataList != null && dataList.size() > 0) {
+
+                for(int i=0; i< dataList.size(); i++){
+                    titleArray.add(dataList.get(i).getFormationNom());
+                    detailArray.add(dataList.get(i).getDomainLabel());
+                }
+
+
+                for(int i=0; i< titleArray.size(); i++)
+                {
+                    Map<String, String> listItem = new HashMap<>();
+                    listItem.put("titleKey", titleArray.get(i));
+                    listItem.put("detailKey", detailArray.get(i));
+                    listArray.add(listItem);
+                }
+
+                SimpleAdapter simpleAdapter = new SimpleAdapter(StatParFormation.this, listArray,
+                        android.R.layout.simple_list_item_2,
+                        new String[] {"titleKey", "detailKey" },
+                        new int[] {android.R.id.text1, android.R.id.text2 });
+
+                lstStatFormList.setAdapter(simpleAdapter);
             }
         }
 
