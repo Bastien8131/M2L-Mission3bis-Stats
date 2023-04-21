@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
                 rs.next();
 
                 //System.out.println(rs.getString(1));
-                if(rs.getString(1).equals("f9fd57bf75ca55dbb4917d9f169fcbbb")){
+                if(rs.getString(1).equals("4a7d1ed414474e4033ac29ccb8653d9b")){
                     OpenStatistique();
                 }else{
                     toast = Toast.makeText(getApplicationContext(),"Le mot de passe ou l'identifiant n'est pas bon",Toast.LENGTH_LONG);
