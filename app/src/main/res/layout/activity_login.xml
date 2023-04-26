@@ -77,7 +77,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:text="0000" />
             </LinearLayout>
         </LinearLayout>
 
