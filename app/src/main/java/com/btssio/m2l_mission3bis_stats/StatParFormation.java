@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -34,9 +36,19 @@ public class StatParFormation extends AppCompatActivity {
 
     public void init(){
         lstStatFormList = findViewById(R.id.lstStatFormList);
+        //onClickStatFormGetStatOfEle
+        lstStatFormList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Faites quelque chose lorsqu'un élément est cliqué
+                //Toast.makeText(getApplicationContext(), "Vous avez cliqué sur l'élément " + position, Toast.LENGTH_SHORT).show();
+
+                String titleEle = ((Map<String,String>)lstStatFormList.getAdapter().getItem(position)).get("titleKey");
+                System.out.println(titleEle);
+            }
+        });
+
     }
-
-
 
 
     /*REQUETE SQL*/
