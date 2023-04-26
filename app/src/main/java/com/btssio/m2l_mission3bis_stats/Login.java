@@ -57,11 +57,9 @@ public class Login extends AppCompatActivity {
         finish();
     }
 
-
-
     /*REQUETE SQL*/
-    private class ConnexionApp extends AsyncTask<Void, Void, Void> {
-        protected Void doInBackground(Void... params) {
+    private class ConnexionApp extends AsyncTask<Void, Void, Boolean> {
+        protected Boolean doInBackground(Void... params) {
             try{
                 // Connexion à la base de données MySQL
                 Statement st = connexionSQLBDD();
@@ -71,22 +69,27 @@ public class Login extends AppCompatActivity {
                 final ResultSet rs = st.executeQuery(SQL);
                 rs.next();
 
-                //System.out.println(rs.getString(1));
-                if(rs.getString(1).equals("4a7d1ed414474e4033ac29ccb8653d9b")){
-                    OpenStatistique();
+                if(rs.getString(1).equals(Fonctions.md5(edtLoginMotDePasse.getText().toString()))){
+                    return true;
                 }else{
-                    toast = Toast.makeText(getApplicationContext(),"Le mot de passe ou l'identifiant n'est pas bon",Toast.LENGTH_LONG);
-                    toast.show();
+                    return false;
                 }
 
             }catch (Exception e){
                 e.printStackTrace();
+                return false;
             }
-            return null;
         }
 
-        protected void onPostExecute(Void result) {
-            // Mettre à jour l'interface utilisateur si nécessaire
+        protected void onPostExecute(Boolean result) {
+            if(result){
+                OpenStatistique();
+            }else{
+                toast = Toast.makeText(getApplicationContext(),"Le mot de passe ou l'identifiant n'est pas bon",Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
     }
+
+
 }
