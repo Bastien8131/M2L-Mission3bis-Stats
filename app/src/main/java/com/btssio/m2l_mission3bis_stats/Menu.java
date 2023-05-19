@@ -25,4 +25,10 @@ public class Menu extends AppCompatActivity {
 
     public void onClickMenuToStatSess(View view) {
     }
+
+    public void onClickMenuToStatPeri(View view) {
+        Intent intent = new Intent(Menu.this, StatParPeriodes.class);
+        startActivity(intent);
+        finish();
+    }
 }
