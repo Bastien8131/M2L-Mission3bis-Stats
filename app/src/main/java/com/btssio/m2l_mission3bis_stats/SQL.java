@@ -7,9 +7,17 @@ import java.sql.Statement;
 
 public class SQL {
 
+    //Connection Database V1
+    /*
     public static String url = "jdbc:mysql://212.227.29.168:3306/crosl";
     public static String user = "res";
     public static String pass = "0L5ieb75&";
+     */
+
+    //Connection Database v2
+    public static String url = "jdbc:mysql://212.227.29.168:3306/crosl_v2";
+    public static String user = "res_v2";
+    public static String pass = "#085E9sho";
 
     public static Statement connexionSQLBDD() {
         try{
