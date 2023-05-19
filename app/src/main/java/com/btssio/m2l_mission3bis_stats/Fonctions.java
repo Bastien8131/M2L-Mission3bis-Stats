@@ -27,4 +27,33 @@ public class Fonctions {
         }
         return "";
     }
+
+    public static Double pourcentageDe(int quantité, int total){
+        double resultat = (quantité / (double) total) * 100;
+        //double nbPour100InscFormation = Math.round((nbInscFormation*100) / nbInscTotal);
+        resultat = Math.round(resultat * 100.0) / 100.0;
+        return resultat;
+    }
+
+    public static Double round(double value){
+        double resultat = Math.round(value * 100.0) / 100.0;
+        return resultat;
+    }
+
+    public static String getNoteTextuel(double note) {
+        if (note < 0 || note > 5) {
+            throw new IllegalArgumentException("La note doit être comprise entre 0 et 5.");
+        }
+
+        if (note >= 4.5) {
+            return "Très bien";
+        } else if (note >= 3.5) {
+            return "Bien";
+        } else if (note >= 2.5) {
+            return "Passable";
+        } else {
+            return "Insuffisant";
+        }
+    }
+
 }
