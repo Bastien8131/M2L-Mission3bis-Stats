@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.M2LMission3bisStats"
         tools:targetApi="31">
+
+        <activity
+            android:name=".StatParPeriodes"
+            android:exported="false" />
         <activity
             android:name=".StatParSession"
             android:exported="false" />

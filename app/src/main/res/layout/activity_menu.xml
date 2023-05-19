@@ -99,12 +99,30 @@
                     android:layout_height="match_parent"
                     android:onClick="onClickMenuToStatSess"
                     android:text="Par Session" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnMenuPeriodes"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:onClick="onClickMenuToStatPeri"
+                    android:text="Par Periodes" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:layout_weight="1"
             android:orientation="vertical"></LinearLayout>
     </LinearLayout>
