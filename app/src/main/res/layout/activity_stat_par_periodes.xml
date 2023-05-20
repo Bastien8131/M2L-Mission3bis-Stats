@@ -21,30 +21,30 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="185dp"
+                android:layout_height="128dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txtStatFormTitre"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
+                    android:layout_height="4dp"
                     android:layout_weight="1"
                     android:elegantTextHeight="false"
                     android:gravity="center"
-                    android:text="Choisir une formation"
+                    android:text="Choisir deux date"
                     android:textColor="#000000"
                     android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300px"
+                android:layout_height="200px"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/txtStatPeriodeSousTitre1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Date de début " />
@@ -61,7 +61,7 @@
                     android:orientation="vertical">
 
                     <CalendarView
-                        android:id="@+id/calendarView3"
+                        android:id="@+id/calStatPeriodeDebut"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -70,12 +70,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300px"
+                android:layout_height="200px"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txtStatPeriodeSousTitre2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Date de fin " />
@@ -92,7 +92,7 @@
                     android:orientation="vertical">
 
                     <CalendarView
-                        android:id="@+id/calendarView4"
+                        android:id="@+id/calStatPeriodeFin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -103,7 +103,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="397dp"
+            android:layout_height="300dp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -132,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingLeft="20px"
-                            android:text="Inscription sur toute formations confondue "
+                            android:text="Inscription sur la période de données"
                             android:textColor="#000000" />
                     </LinearLayout>
 
@@ -154,7 +154,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="40px"
-                                android:text="Nombre d'inscription" />
+                                android:text="Nombre d'inscription / places" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -225,12 +225,31 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnStatFormBackMenu"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickStatFormBackMenu"
-                    android:text="Menu" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnStatFormBackMenu"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50px"
+                        android:layout_weight="0"
+                        android:onClick="onClickStatPeriodeBackMenu"
+                        android:text="Menu" />
+
+                    <Button
+                        android:id="@+id/btnStatPeriodeProcess"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50px"
+                        android:layout_weight="0"
+                        android:onClick="onClickStatPeriodeProcess"
+                        android:text="Procédé" />
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 
