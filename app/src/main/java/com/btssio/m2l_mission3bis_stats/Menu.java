@@ -15,6 +15,9 @@ public class Menu extends AppCompatActivity {
     }
 
     public void onClickMenuToStatDom(View view) {
+        Intent intent = new Intent(Menu.this, StatParDomaine.class);
+        startActivity(intent);
+        finish();
     }
 
     public void onClickMenuToStatForm(View view) {
