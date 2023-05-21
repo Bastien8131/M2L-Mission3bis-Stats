@@ -27,6 +27,9 @@ public class Menu extends AppCompatActivity {
     }
 
     public void onClickMenuToStatSess(View view) {
+        Intent intent = new Intent(Menu.this, StatParSession.class);
+        startActivity(intent);
+        finish();
     }
 
     public void onClickMenuToStatPeri(View view) {
