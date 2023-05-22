@@ -64,12 +64,15 @@ public class Login extends AppCompatActivity {
                 // Connexion à la base de données MySQL
                 Statement st = connexionSQLBDD();
 
-                String SQL = "SELECT COMPTEMOTDEPASSE FROM compte WHERE COMPTELOGIN = '"+edtLoginIdentifiant.getText()+"'";
+                String SQL = "SELECT COMPTEMOTDEPASSE, COMPTERESPONSABLE FROM compte WHERE COMPTELOGIN = '"+edtLoginIdentifiant.getText()+"'";
 
                 final ResultSet rs = st.executeQuery(SQL);
                 rs.next();
 
-                if(rs.getString(1).equals(Fonctions.md5(edtLoginMotDePasse.getText().toString()))){
+                String motDePasse = rs.getString("COMPTEMOTDEPASSE");
+                Integer estResponsable = rs.getInt("COMPTERESPONSABLE");
+
+                if( motDePasse.equals(Fonctions.md5(edtLoginMotDePasse.getText().toString())) && estResponsable == 1 ){
                     return true;
                 }else{
                     return false;
