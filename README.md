@@ -1,5 +1,5 @@
 # M2L-Mission3bis-Stats
-Deuxième projet utilisé pour mon épreuve E5 en BTS SIO.
+Deuxième projet choisi pour mon épreuve E5 en BTS SIO.
 
 Ce projet utilise une base de données commune avec mon premier projet (https://github.com/Bastien8131/FormaGestionnaireInscription).
 
